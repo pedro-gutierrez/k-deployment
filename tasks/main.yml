@@ -1,6 +1,6 @@
 ---
  - name: Delete {{ display_name }} deployment
-   shell: "kubectl delete deployment haproxy --namespace={{ ns }}"
+   shell: "kubectl delete deployment {{ name }} --namespace={{ ns }}"
    ignore_errors: yes
 
  - name: Wait for {{ display_name }} pods to be deleted
