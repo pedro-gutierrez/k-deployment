@@ -1,21 +1,21 @@
 ---
- - name: Delete {{ display_name }} deployment
+ - name: Delete {{ name }} deployment
    shell: "kubectl delete deployment {{ name }} --namespace={{ ns }}"
    ignore_errors: yes
 
- - name: Wait for {{ display_name }} pods to be deleted
+ - name: Wait for {{ name }} pods to be deleted
    shell: "kubectl get pods --namespace={{ ns }}"
    register: result
    until: result.stdout.find(name) == -1
    retries: "{{ retry.max }}"
    delay: "{{ retry.delay }}"
 
- - name: Wait for {{ display_name }} deployment to be deleted
+ - name: Wait for {{ name }} deployment to be deleted
    shell: "kubectl get deployments --namespace={{ ns }}"
    register: result
    until: result.stdout.find(name) == -1
    retries: "{{ retry.max }}"
    delay: "{{ retry.delay }}"
 
- - name: Create {{ display_name }} Deployment
+ - name: Create {{ name }} deployment
    shell: "kubectl create -f {{ yamls }}/{{ name }}-deployment.yml"
