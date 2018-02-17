@@ -1,4 +1,10 @@
 ---
+
+ - name: Delete {{ name }} attached service
+   shell: "kubectl delete service {{ name }} --namespace={{ ns }}"
+   ignore_errors: yes
+   when: has_service
+
  - name: Delete {{ name }} deployment
    shell: "kubectl delete deployment {{ name }} --namespace={{ ns }}"
    ignore_errors: yes
