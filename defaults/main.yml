@@ -1,2 +1,2 @@
 ---
-# defaults file for k-deployment
+file: "{{ name }}"
