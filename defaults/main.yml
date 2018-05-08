@@ -1,3 +1,4 @@
 ---
 file: "{{ name }}"
 has_service: no
+wait_for_pods: no
